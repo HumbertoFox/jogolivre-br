@@ -61,10 +61,10 @@ export default function FooterComponents() {
 
         gsap.fromTo(divWhats, {
             opacity: 0,
-            scale: 1.2,
+            y: -300,
         }, {
             opacity: 1,
-            scale: 1,
+            y: 0,
             duration: 1,
             scrollTrigger: {
                 trigger: footer,
