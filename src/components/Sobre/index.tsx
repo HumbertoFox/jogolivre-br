@@ -89,24 +89,24 @@ export default function SobreComponents() {
     }, []);
     return (
         <div
-            className='w-full min-h-screen flex justify-center'
+            className='w-full min-h-[50vh] sm:min-h-screen flex justify-center'
             id='sobre'
             ref={divRef}
         >
             <section className='w-full max-w-screen-2xl min-h-full flex flex-col justify-evenly items-center px-4 py-2 mx-auto'>
                 <h3
-                    className='text-5xl text-center text-red-500 uppercase opacity-0'
+                    className='text-2xl sm:text-5xl text-center text-red-500 uppercase opacity-0 cursor-default'
                     ref={h3Ref}
                 >
                     <strong>Jogo Livre BR</strong> O Canal da Família
                 </h3>
                 <p
-                    className='text-3xl'
+                    className='text-base sm:text-3xl text-center cursor-default'
                     ref={pRef}
                 >
                     Voltado para Diversão do Público Brasileiro
                 </p>
-                <p className='text-2xl text-justify'>
+                <p className='text-sm sm:text-2xl text-justify cursor-default'>
                     <span ref={span0Ref}>Gamer é uma palavra usada para definir uma pessoa que joga vídeo game.</span>
                     <span ref={span1Ref}> Ser gamer é muito mais complexo do simplesmente ter meia duzia de jogos,</span>
                     <span ref={span2Ref}> gamer prefere ficar jogando vídeo game do que sair com amigos,</span>

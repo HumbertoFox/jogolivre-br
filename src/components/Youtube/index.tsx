@@ -49,13 +49,13 @@ export default function YoutubeComponents() {
     }, []);
     return (
         <div
-            className='w-full min-h-screen flex justify-center'
+            className='w-full min-h-[70vh] sm:min-h-screen flex justify-center'
             id='youtube'
             ref={divRef}
         >
             <section className='w-full max-w-screen-2xl min-h-full flex flex-col justify-around'>
                 <h1
-                    className='text-5xl text-center text-red-500 uppercase'
+                    className='text-2xl sm:text-5xl text-center text-red-500 uppercase cursor-default'
                     ref={h1Ref}
                 >
                     <div>
@@ -65,7 +65,7 @@ export default function YoutubeComponents() {
                         Brasileiro
                     </div>
                 </h1>
-                <div className='flex justify-around'>
+                <div className='flex justify-center px-3 sm:px-0'>
                     <iframe
                         width='940'
                         height='485'

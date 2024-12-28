@@ -71,7 +71,7 @@ export default function HeaderComponents() {
                     height={110}
                 />
                 <div>
-                    <h2 className='text-base text-center font-bold md:text-2xl'>
+                    <h2 className='text-base text-center font-bold md:text-2xl cursor-default'>
                         A {yearsActive} Anos o Canal da Família!
                     </h2>
                     <nav className='gap-4 justify-center hidden md:flex'>
