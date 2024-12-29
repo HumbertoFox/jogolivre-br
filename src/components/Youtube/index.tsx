@@ -15,37 +15,41 @@ export default function YoutubeComponents() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const divYouTube = divRef.current;
-        const h1YouTube = h1Ref.current;
-        const iframeYouTube = iframeRef.current;
+        const isMobile = window.matchMedia('(max-width: 640px)').matches;
 
-        gsap.fromTo(h1YouTube, {
-            opacity: 0,
-            y: 300,
-            color: '#000',
-        }, {
-            opacity: 1,
-            y: 0,
-            color: '#ef4444',
-            duration: 1,
-            scrollTrigger: {
-                trigger: divYouTube,
-                start: 'top center',
-            },
-        });
+        if (!isMobile) {
+            const divYouTube = divRef.current;
+            const h1YouTube = h1Ref.current;
+            const iframeYouTube = iframeRef.current;
 
-        gsap.fromTo(iframeYouTube, {
-            opacity: 0,
-            y: -300,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: divYouTube,
-                start: 'top center',
-            },
-        });
+            gsap.fromTo(h1YouTube, {
+                opacity: 0,
+                y: 300,
+                color: '#000',
+            }, {
+                opacity: 1,
+                y: 0,
+                color: '#ef4444',
+                duration: 1,
+                scrollTrigger: {
+                    trigger: divYouTube,
+                    start: 'top center',
+                },
+            });
+
+            gsap.fromTo(iframeYouTube, {
+                opacity: 0,
+                y: -300,
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: divYouTube,
+                    start: 'top center',
+                },
+            });
+        };
     }, []);
     return (
         <div

@@ -22,114 +22,118 @@ export default function FooterComponents() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const footer = footerRef.current;
-        const h4Footer = h4Ref.current;
-        const divFace = divFaceRef.current;
-        const divWhats = divWhatsRef.current;
-        const divTwich = divTwichRef.current;
-        const linkFace = linkFaceRef.current;
-        const linkWhats = linkWhatsRef.current;
-        const linkTwich = linkTwichRef.current;
+        const isMobile = window.matchMedia('(max-width: 640px)').matches;
 
-        gsap.fromTo(h4Footer, {
-            opacity: 0,
-            y: 300,
-            color: '#000',
-        }, {
-            opacity: 1,
-            y: 0,
-            color: '#ef4444',
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+        if (!isMobile) {
+            const footer = footerRef.current;
+            const h4Footer = h4Ref.current;
+            const divFace = divFaceRef.current;
+            const divWhats = divWhatsRef.current;
+            const divTwich = divTwichRef.current;
+            const linkFace = linkFaceRef.current;
+            const linkWhats = linkWhatsRef.current;
+            const linkTwich = linkTwichRef.current;
 
-        gsap.fromTo(divFace, {
-            opacity: 0,
-            x: 300,
-        }, {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(h4Footer, {
+                opacity: 0,
+                y: 300,
+                color: '#000',
+            }, {
+                opacity: 1,
+                y: 0,
+                color: '#ef4444',
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
 
-        gsap.fromTo(divWhats, {
-            opacity: 0,
-            y: -300,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(divFace, {
+                opacity: 0,
+                x: 300,
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
 
-        gsap.fromTo(divTwich, {
-            opacity: 0,
-            x: -300,
-        }, {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(divWhats, {
+                opacity: 0,
+                y: -300,
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
 
-        gsap.fromTo(linkFace, {
-            opacity: 0,
-            y: -300,
-            x: 100,
-        }, {
-            display: 'flex',
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(divTwich, {
+                opacity: 0,
+                x: -300,
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
 
-        gsap.fromTo(linkWhats, {
-            opacity: 0,
-            y: -300,
-        }, {
-            display: 'flex',
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(linkFace, {
+                opacity: 0,
+                y: -300,
+                x: 100,
+            }, {
+                display: 'flex',
+                opacity: 1,
+                y: 0,
+                x: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
 
-        gsap.fromTo(linkTwich, {
-            opacity: 0,
-            y: -300,
-            x: -100,
-        }, {
-            display: 'flex',
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: footer,
-                start: 'top center'
-            },
-        });
+            gsap.fromTo(linkWhats, {
+                opacity: 0,
+                y: -300,
+            }, {
+                display: 'flex',
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
+
+            gsap.fromTo(linkTwich, {
+                opacity: 0,
+                y: -300,
+                x: -100,
+            }, {
+                display: 'flex',
+                opacity: 1,
+                y: 0,
+                x: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: footer,
+                    start: 'top center'
+                },
+            });
+        };
     }, []);
     return (
         <footer
@@ -149,7 +153,7 @@ export default function FooterComponents() {
                     ref={divFaceRef}
                 >
                     <Link
-                        className='hidden items-center gap-2 text-center text-sm font-semibold text-blue-600 hover:text-blue-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-blue-700 hover:border-yellow-400'
+                        className='flex sm:hidden items-center gap-2 text-center text-sm font-semibold text-blue-600 hover:text-blue-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-blue-700 hover:border-yellow-400'
                         href={'https://www.facebook.com/jogolivreBR'}
                         target='_blank'
                         ref={linkFaceRef}
@@ -166,7 +170,7 @@ export default function FooterComponents() {
                     ref={divWhatsRef}
                 >
                     <Link
-                        className='hidden items-center gap-2 text-center text-sm font-semibold text-green-600 hover:text-green-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-green-700 hover:border-yellow-400'
+                        className='flex sm:hidden items-center gap-2 text-center text-sm font-semibold text-green-600 hover:text-green-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-green-700 hover:border-yellow-400'
                         href={'https://api.whatsapp.com/send/?phone=5519992354659&text&type=phone_number&app_absent=0'}
                         target='_blank'
                         ref={linkWhatsRef}
@@ -183,7 +187,7 @@ export default function FooterComponents() {
                     ref={divTwichRef}
                 >
                     <Link
-                        className='hidden items-center gap-2 text-center text-sm font-semibold text-violet-600 hover:text-violet-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-violet-700 hover:border-yellow-400'
+                        className='flex sm:hidden items-center gap-2 text-center text-sm font-semibold text-violet-600 hover:text-violet-400 mt-8 duration-500 bg-black px-3 py-1 rounded-lg hover:bg-slate-700 border border-violet-700 hover:border-yellow-400'
                         href={'https://www.facebook.com/jogolivreBR'}
                         target='_blank'
                         ref={linkTwichRef}

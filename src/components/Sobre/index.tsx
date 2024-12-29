@@ -30,62 +30,66 @@ export default function SobreComponents() {
     useEffect(() => {
         gsap.registerPlugin(ScrollToPlugin);
 
-        const divSobre = divRef.current;
-        const h3Sobre = h3Ref.current;
-        const pSobre = pRef.current;
-        const spans = [
-            span0Ref.current,
-            span1Ref.current,
-            span2Ref.current,
-            span3Ref.current,
-            span4Ref.current,
-            span5Ref.current,
-            span6Ref.current,
-            span7Ref.current,
-            span8Ref.current,
-            span9Ref.current,
-            span10Ref.current,
-            span11Ref.current,
-            span12Ref.current,
-            span13Ref.current,
-        ];
+        const isMobile = window.matchMedia('(max-width: 640px)').matches;
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: divSobre,
-                start: 'top center',
-            },
-        });
+        if (!isMobile) {
+            const divSobre = divRef.current;
+            const h3Sobre = h3Ref.current;
+            const pSobre = pRef.current;
+            const spans = [
+                span0Ref.current,
+                span1Ref.current,
+                span2Ref.current,
+                span3Ref.current,
+                span4Ref.current,
+                span5Ref.current,
+                span6Ref.current,
+                span7Ref.current,
+                span8Ref.current,
+                span9Ref.current,
+                span10Ref.current,
+                span11Ref.current,
+                span12Ref.current,
+                span13Ref.current,
+            ];
 
-        tl.fromTo(h3Sobre, {
-            opacity: 0,
-            y: 300,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-        });
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: divSobre,
+                    start: 'top center',
+                },
+            });
 
-        tl.fromTo(pSobre, {
-            opacity: 0,
-            y: -300,
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-        });
-
-        spans.forEach((span, index) => {
-            tl.fromTo(span, {
+            tl.fromTo(h3Sobre, {
                 opacity: 0,
-                scale: 1.2,
+                y: 300,
             }, {
                 opacity: 1,
-                scale: 1,
-                duration: 0.1,
-                delay: index * 0.01,
+                y: 0,
+                duration: 1,
             });
-        });
+
+            tl.fromTo(pSobre, {
+                opacity: 0,
+                y: -300,
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+            });
+
+            spans.forEach((span, index) => {
+                tl.fromTo(span, {
+                    opacity: 0,
+                    scale: 1.2,
+                }, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.1,
+                    delay: index * 0.01,
+                });
+            });
+        };
     }, []);
     return (
         <div
