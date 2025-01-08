@@ -89,7 +89,10 @@ export default function HeaderComponents() {
                         type='button'
                         onClick={toggleDarkMode}
                     >
-                        {isDarkMode ? 'Branco' : 'Preto'}
+                        {isDarkMode
+                            ? 'Claro'
+                            : 'Escuro'
+                        }
                         <Icon
                             className='w-4 h-4'
                             icon={isDarkMode

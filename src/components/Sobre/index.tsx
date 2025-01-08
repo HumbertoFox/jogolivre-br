@@ -124,7 +124,7 @@ export default function SobreComponents() {
                     <span ref={span10Ref}> muito pelo contrário,</span>
                     <span ref={span11Ref}> um gamer joga basicamente qualquer jogo.</span>
                     <span ref={span12Ref}> O que faz uma pessoa ser gamer,</span>
-                    <span ref={span13Ref}>é a paixão pelos vídeo games acima de tudo e ter os jogos como sua maior diversão.</span>
+                    <span ref={span13Ref}> é a paixão pelos vídeo games acima de tudo e ter os jogos como sua maior diversão.</span>
                 </p>
             </section>
         </div>
