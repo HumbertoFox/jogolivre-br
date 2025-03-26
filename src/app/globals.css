@@ -20,3 +20,58 @@ body.dark {
   background-color: #121212;
   color: #ffffff;
 }
+
+.link {
+  display: flex;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  padding: 1px;
+  background: linear-gradient(45deg, #ffa500, #fff, #ffa500, #fff, #ffa500);
+  background-size: 400% 400%;
+  animation: gradient 4s linear infinite;
+  margin-bottom: auto;
+}
+
+.dark .link {
+  background: linear-gradient(45deg, #ffa500, #000, #ffa500, #000, #ffa500);
+  background-size: 400% 400%;
+  animation: gradient 4s linear infinite;
+}
+
+.link span {
+  font-size: 13px;
+  font-style: italic;
+  color: #000;
+  background-color: #fff;
+  border-radius: 10px 0;
+  padding: 3px 20px;
+  transition: .3s ease-in-out;
+}
+
+.dark .link span {
+  color: #fff;
+  background-color: #000;
+}
+
+.link:hover span {
+  text-shadow: 0 0 20px green;
+  color: green;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

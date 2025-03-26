@@ -16,7 +16,6 @@ export default function HeaderComponents() {
 
     useEffect(() => {
         const logo = document.querySelector('.logo');
-        const links = document.querySelectorAll('.link');
 
         if (isDarkMode) {
             document.body.classList.add('dark');
@@ -41,32 +40,6 @@ export default function HeaderComponents() {
                 }
             );
         };
-
-        links.forEach((link) => {
-            link.addEventListener('mouseenter', () => {
-                gsap.to(link, {
-                    scale: 1.2,
-                    color: '#FFA500',
-                    textShadow: '0 0 8px #FFA500, 0 0 15px #FFA500',
-                    rotationX: '10deg',
-                    rotationY: '10deg',
-                    duration: 0.3,
-                    ease: 'power1.out',
-                });
-            });
-
-            link.addEventListener('mouseleave', () => {
-                gsap.to(link, {
-                    scale: 1,
-                    color: isDarkMode ? '#ffffff' : '#000000',
-                    textShadow: 'none',
-                    rotationX: '0deg',
-                    rotationY: '0deg',
-                    duration: 0.3,
-                    ease: 'power1.out',
-                });
-            });
-        });
     }, [isDarkMode]);
     return (
         <div className='w-full flex justify-center'>
@@ -83,13 +56,13 @@ export default function HeaderComponents() {
                 <div>
                     <button
                         className='flex items-center gap-3 ml-auto'
-                        type='button'
-                        onClick={toggleDarkMode}
-                    >
-                        {isDarkMode
+                        title={isDarkMode
                             ? 'Claro'
                             : 'Escuro'
                         }
+                        type='button'
+                        onClick={toggleDarkMode}
+                    >
                         <Icon
                             className='w-4 h-4'
                             icon={isDarkMode
@@ -98,7 +71,7 @@ export default function HeaderComponents() {
                             }
                         />
                     </button>
-                    <h2 className='text-base text-center font-bold md:text-2xl cursor-default'>
+                    <h2 className='text-base text-center font-bold md:text-2xl italic cursor-default'>
                         A {yearsActive} Anos o Canal da Família!
                     </h2>
                     <nav className='gap-4 justify-center hidden md:flex'>
@@ -106,21 +79,21 @@ export default function HeaderComponents() {
                             className='link'
                             href={'#youtube'}
                         >
-                            Vídeos
+                            <span>Vídeos</span>
                         </Link>
 
                         <Link
                             className='link'
                             href={'#sobre'}
                         >
-                            Sobre Nós
+                            <span>Sobre Nós</span>
                         </Link>
 
                         <Link
                             className='link'
                             href={'#social'}
                         >
-                            Redes Sociais
+                            <span>Redes Sociais</span>
                         </Link>
                     </nav>
                 </div>
