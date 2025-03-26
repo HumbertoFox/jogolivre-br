@@ -2,10 +2,27 @@
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-    useEffect,
-    useRef
-} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useRef } from 'react';
+import { EffectCoverflow, Keyboard } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
+interface VideosItems {
+    src: string;
+    title: string;
+};
+
+const videosSlides: VideosItems[] = [
+    { src: 'https://www.youtube.com/embed/mZIK9hg6irs', title: 'Jogo Livre BR Ediçao e Video (DANIEL Grupo Gameplays-MG)divulgação Canal' },
+    { src: 'https://www.youtube.com/embed/XyR75OhMfjA', title: 'Crônicas de Nárnia (GBA)-PT-BR First play#01' },
+    { src: 'https://www.youtube.com/embed/ixwzIbFT4WA', title: 'Como Testar Controle Joystick PS3 Original e Paralelo' },
+    { src: 'https://www.youtube.com/embed/nu3Ep_oy_Ok', title: 'Como instalar e configurar TeamSpeak (2025).' },
+    { src: 'https://www.youtube.com/embed/1YU_p3YmoaU', title: 'DIABLO 3 - COOP - PTBR CAÇADAS #01.' },
+    { src: 'https://www.youtube.com/embed/QNxUvnleNzM', title: 'Borderlands 2 - COOP - PTBR #01.' },
+    { src: 'https://www.youtube.com/embed/Vzjb5BxBK0c', title: 'Chasm The Rift - PTBR #01.' },
+];
 
 export default function YoutubeComponents() {
     const divRef = useRef(null);
@@ -69,18 +86,45 @@ export default function YoutubeComponents() {
                         Brasileiro
                     </div>
                 </h1>
-                <div className='flex justify-center px-3 sm:px-0'>
-                    <iframe
-                        width='940'
-                        height='485'
-                        src='https://www.youtube.com/embed/XyR75OhMfjA'
-                        title='Crônicas de Nárnia (GBA)-PT-BR First play#01'
-                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                        referrerPolicy='strict-origin-when-cross-origin'
-                        allowFullScreen
-                        ref={iframeRef}
-                    />
-                </div>
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={3}
+                    keyboard={{
+                        enabled: true,
+                    }}
+                    loop={true}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    modules={[
+                        EffectCoverflow,
+                        Keyboard,
+                    ]}
+                    className='w-full'
+                    ref={iframeRef}
+                >
+                    {videosSlides.map((item, index) => (
+                        <SwiperSlide key={index}>
+                            <div className='flex justify-center px-3 sm:px-0'>
+                                <iframe
+                                    width='940'
+                                    height='485'
+                                    src={item.src}
+                                    title={item.title}
+                                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                                    referrerPolicy='strict-origin-when-cross-origin'
+                                    allowFullScreen
+                                />
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </section>
         </div>
     );
