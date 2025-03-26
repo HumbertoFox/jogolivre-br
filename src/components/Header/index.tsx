@@ -3,10 +3,7 @@
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-    useEffect,
-    useState
-} from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '@/components/Icons';
 
 export default function HeaderComponents() {
