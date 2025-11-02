@@ -1,12 +1,13 @@
-"use client"
+'use client';
 
-import * as React from 'react';
 import Link from 'next/link';
 import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle, } from '@/components/ui/navigation-menu';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { useTheme } from 'next-themes';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -49,17 +50,54 @@ const components: { title: string; href: string; description: string }[] = [
 export function HeaderNavigationMenu() {
     const isMobile = useIsMobile();
     const { setTheme, theme } = useTheme();
-
+    const headerRef = useRef<HTMLHeadElement>(null);
     const getButtonStyle = (target: string) =>
-        `w-full flex flex-row items-center justify-center gap-2 rounded-md p-2 transition-colors ${theme === target
+        `w-full flex flex-row items-center gap-2 transition-colors ${theme === target
             ? "bg-accent text-primary"
             : "hover:bg-muted"
         }`;
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo('.logo', {
+                opacity: 0,
+                scale: 0.5,
+            }, {
+                opacity: 1,
+                scale: 1,
+                duration: 2,
+                ease: 'elastic.out(2, 1)'
+            });
+
+            gsap.fromTo('.link-item', {
+                opacity: 0,
+                x: -50,
+                rotation: -15
+            }, {
+                opacity: 1,
+                x: 0,
+                rotation: 0,
+                duration: 1,
+                ease: 'back.out(1.7)',
+                stagger: 0.25,
+                delay: 0.4
+            });
+        }, headerRef);
+
+        return () => ctx.revert();
+    }, []);
     return (
-        <header className="p-2.5">
+        <header
+            ref={headerRef}
+            className="w-full flex justify-between pt-3 px-3 pb-0.5 md:flex-row-reverse bg-transparent">
+            <Link
+                href="/"
+                className="hidden size-16 logo opacity-0 md:block"
+            >
+                <AppLogoIcon />
+            </Link>
             <NavigationMenu viewport={isMobile}>
                 <NavigationMenuList className="flex-wrap">
-                    <NavigationMenuItem>
+                    <NavigationMenuItem className="link-item opacity-0">
                         <NavigationMenuTrigger>Home</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -90,7 +128,7 @@ export function HeaderNavigationMenu() {
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem>
+                    <NavigationMenuItem className="link-item opacity-0">
                         <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -106,15 +144,15 @@ export function HeaderNavigationMenu() {
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem>
+                    <NavigationMenuItem className="link-item opacity-0">
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                             <Link href="/docs">Docs</Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="hidden md:block">
+                    <NavigationMenuItem className="hidden link-item opacity-0 md:block">
                         <NavigationMenuTrigger>List</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul className="grid w-[300px] gap-4">
+                            <ul className="grid w-72 gap-4">
                                 <li>
                                     <NavigationMenuLink asChild>
                                         <Link href="#">
@@ -144,10 +182,10 @@ export function HeaderNavigationMenu() {
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="hidden md:block">
+                    <NavigationMenuItem className="hidden link-item opacity-0 md:block">
                         <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul className="grid w-[200px] gap-4">
+                            <ul className="grid w-48 gap-4">
                                 <li>
                                     <NavigationMenuLink asChild>
                                         <Link href="#">Components</Link>
@@ -162,11 +200,11 @@ export function HeaderNavigationMenu() {
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="hidden md:block">
+                    <NavigationMenuItem className="link-item opacity-0">
                         <NavigationMenuTrigger>Temas</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <ul className="grid max-w-24 text-center gap-4">
-                                <li className="space-y-1.5">
+                            <ul className="grid md:max-w-24">
+                                <li className="flex flex-row gap-6 md:gap-1.5 md:flex-col">
                                     <NavigationMenuLink asChild>
                                         <button type="button" onClick={() => setTheme("light")} className={getButtonStyle("light")}>
                                             <Sun />
