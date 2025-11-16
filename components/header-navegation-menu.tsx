@@ -88,7 +88,7 @@ export function HeaderNavigationMenu() {
     return (
         <header
             ref={headerRef}
-            className="w-full flex justify-between pt-3 px-3 pb-0.5 md:flex-row-reverse bg-transparent">
+            className="absolute w-full flex justify-between pt-3 px-3 pb-0.5 md:flex-row-reverse bg-transparent">
             <Link
                 href="/"
                 className="hidden size-16 logo opacity-0 md:block"
