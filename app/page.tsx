@@ -1,6 +1,11 @@
+import StartComponentPage from '@/components/start';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between">
-    </main>
+    <>
+      <main className="flex min-h-screen min-w-full max-w-3xl flex-col justify-between">
+        <StartComponentPage />
+      </main>
+    </>
   );
 }
