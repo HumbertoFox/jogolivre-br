@@ -17,7 +17,7 @@ type Props = {
 };
 
 export default function StartComponentClient({ images }: Props) {
-    const divImageRef = useRef<(HTMLDivElement)[]>([]);
+    const divImageRef = useRef<(HTMLDivElement | null)[]>([]);
     const [selectedIndex, setSelectedIndex] = useState<number>(2);
     const positionClass = [
         'mt-20',
@@ -29,7 +29,17 @@ export default function StartComponentClient({ images }: Props) {
         'object-[-300px]',
         'object-[-600px]',
     ];
-    const handleClickDivImage = (index: number) => {
+    const preloadImage = (src: string) => {
+        return new Promise((resolve) => {
+            const img = new window.Image();
+            img.src = src;
+            img.onload = () => resolve(true);
+        });
+    };
+
+    const handleClickDivImage = async (index: number) => {
+        const url = images[index].url;
+        await preloadImage(url);
         setSelectedIndex(index);
 
         divImageRef.current.forEach((element, i) => {
@@ -70,14 +80,14 @@ export default function StartComponentClient({ images }: Props) {
     return (
         <section
             style={{ backgroundImage: `url(${images[selectedIndex].url})` }}
-            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-cover bg-fixed transition-all duration-500"
+            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-cover bg-fixed transition-all duration-500 ease-in-out"
         >
             {images.map((img, index) => {
                 return (
                     <div
                         key={img.url}
                         onClick={() => handleClickDivImage(index)}
-                        ref={(el) => { divImageRef.current[index] = el! }}
+                        ref={(el) => { divImageRef.current[index] = el }}
                         className={`flex w-lg h-[924px] cursor-pointer z-1 opacity-0 ${positionClass[index]}`}
                     >
                         <Image
