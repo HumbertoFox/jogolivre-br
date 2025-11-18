@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'rj22vymlrqn4lam6.public.blob.vercel-storage.com',
         pathname: '/startpage/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'rj22vymlrqn4lam6.public.blob.vercel-storage.com',
+        pathname: '/onegamer/**',
+      },
     ],
   },
 };

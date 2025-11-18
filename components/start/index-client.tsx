@@ -20,9 +20,9 @@ export default function StartComponentClient({ images }: Props) {
     const divImageRef = useRef<(HTMLDivElement)[]>([]);
     const [selectedIndex, setSelectedIndex] = useState<number>(2);
     const positionClass = [
-        'absolute flex w-lg h-full left-1/12 top-1/12',
-        'absolute flex w-lg h-full left-1/2 -translate-x-1/2 top-1/2',
-        'absolute flex w-lg h-full right-1/12 top-3/4',
+        'mt-20',
+        'mt-[512px]',
+        'mt-60',
     ];
     const imageClass = [
         'object-[-900px]',
@@ -39,6 +39,7 @@ export default function StartComponentClient({ images }: Props) {
                 const isScaledUp = element.dataset.scaled === 'true';
                 gsap.to(element, {
                     scale: isScaledUp ? 1 : 1.2,
+                    zIndex: 2,
                     duration: 0.5,
                     ease: "power2.out",
                 });
@@ -46,6 +47,7 @@ export default function StartComponentClient({ images }: Props) {
             } else {
                 gsap.to(element, {
                     scale: 1,
+                    zIndex: 1,
                     duration: 0.5,
                     ease: "power2.out",
                 });
@@ -54,18 +56,21 @@ export default function StartComponentClient({ images }: Props) {
         });
     };
     useGSAP(() => {
-        gsap.from(divImageRef.current, {
+        gsap.fromTo(divImageRef.current, {
             opacity: 0,
             y: -300,
+        }, {
+            opacity: 1,
+            y: 0,
             duration: 3,
             stagger: 0.3,
-            ease: "power3.out",
+            ease: "power3.out"
         });
     });
     return (
         <section
             style={{ backgroundImage: `url(${images[selectedIndex].url})` }}
-            className={`relative min-w-full min-h-screen bg-cover bg-center transition-all duration-500`}
+            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-cover bg-fixed transition-all duration-500"
         >
             {images.map((img, index) => {
                 return (
@@ -73,7 +78,7 @@ export default function StartComponentClient({ images }: Props) {
                         key={img.url}
                         onClick={() => handleClickDivImage(index)}
                         ref={(el) => { divImageRef.current[index] = el! }}
-                        className={`cursor-pointer ${positionClass[index]}`}
+                        className={`flex w-lg h-[924px] cursor-pointer z-1 opacity-0 ${positionClass[index]}`}
                     >
                         <Image
                             src={img.url}

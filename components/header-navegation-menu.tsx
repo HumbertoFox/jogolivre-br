@@ -47,7 +47,7 @@ const components: { title: string; href: string; description: string }[] = [
     },
 ]
 
-export function HeaderNavigationMenu() {
+export default function HeaderNavigationMenu() {
     const isMobile = useIsMobile();
     const { setTheme, theme } = useTheme();
     const headerRef = useRef<HTMLHeadElement>(null);
