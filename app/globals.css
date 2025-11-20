@@ -116,7 +116,56 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* @layer utilities {
+  .img-select-animations {
+    @apply ;
+  }
+} */
+
+@theme {
+  --animate-image-right: slide-fade-right 1.5s ease forwards;
+  --animate-image-center: slide-fade-center 1.5s ease forwards;
+  --animate-image-left: slide-fade-left 1.5s ease forwards;
+
+  @keyframes slide-fade-right {
+    0% {
+      transform: translate(500px, -500px) scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-fade-center {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-fade-left {
+    0% {
+      transform: translate(-500px, -500px) scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
   }
 }

@@ -21,7 +21,7 @@ export default function StartComponentClient({ images }: Props) {
     const [selectedIndex, setSelectedIndex] = useState<number>(2);
     const positionClass = [
         'mt-20',
-        'mt-[512px]',
+        'mt-[512px] -mb-20',
         'mt-60',
     ];
     const imageClass = [
