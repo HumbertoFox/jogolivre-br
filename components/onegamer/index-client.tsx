@@ -37,7 +37,7 @@ export default function OneGamerComponentClient({ images }: Props) {
     return (
         <section
             ref={sectionRef}
-            className="relative flex gap-6 justify-center min-w-full min-h-screen"
+            className='relative flex gap-6 justify-center min-w-full min-h-screen bg-[url("/images/background.avif")] lg:bg-[url("/images/background_all.avif")] bg-fixed bg-no-repeat 2xl:bg-cover'
         >
             {images.map((img, index) => {
                 const isActive = activeIndex === index;
@@ -47,7 +47,7 @@ export default function OneGamerComponentClient({ images }: Props) {
                         onClick={() => handleClick(index)}
                         className={`
                             flex w-lg h-[924px] cursor-pointer transition-transform
-                            ${isActive ? 'z-1' : 'z-0'}
+                            ${isActive ? 'z-10' : 'z-0'}
                             ${positionClass[index]}
                         `}
                     >

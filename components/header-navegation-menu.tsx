@@ -4,7 +4,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import AppLogoIcon from '@/components/app-logo-icon';
 import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { FaInstagram, FaSquareFacebook, FaSquareYoutube } from "react-icons/fa6";
+import { FaSquareFacebook, FaSquareWhatsapp, FaSquareYoutube, FaTwitch } from "react-icons/fa6";
 import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
@@ -85,19 +85,19 @@ export default function HeaderNavigationMenu() {
                                     href={pathname === '/about' ? '#about' : '/about#about'}
                                     title="Sobre Nós"
                                 >
-                                    Re-usable components built using Radix UI and Tailwind CSS.
+                                    Voltado para Diversão do Público Brasileiro
                                 </ListItem>
                                 <ListItem
-                                    href={pathname === '/about' ? '#objective' : '/about#objectve'}
+                                    href={pathname === '/about' ? '#objective' : '/about#objective'}
                                     title="Objetivo"
                                 >
-                                    How to install dependencies and structure your app.
+                                    Entretenimento e bom papo.
                                 </ListItem>
                                 <ListItem
                                     href={pathname === '/about' ? '#who_we_are' : '/about#who_we_are'}
                                     title="Quem Somos"
                                 >
-                                    Styles for headings, paragraphs, lists...etc
+                                    Conheça nossa história e o propósito do canal.
                                 </ListItem>
                             </ul>
                         </NavigationMenuContent>
@@ -108,18 +108,37 @@ export default function HeaderNavigationMenu() {
                             <ul className="grid w-72 gap-4">
                                 <li>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#" className="group/instagram">
+                                        <Link href="#" className="group/twitch">
                                             <div className="flex items-center gap-2 font-medium">
-                                                <FaInstagram className="size-6 transition-colors group-hover/instagram:text-pink-500" />
-                                                <span className="transition-colors group-hover/instagram:text-pink-500">Instagram</span>
+                                                <FaTwitch className="size-6 transition-colors group-hover/twitch:text-purple-500" />
+                                                <span className="transition-colors group-hover/twitch:text-purple-500">Twitch</span>
                                             </div>
                                             <div className="text-muted-foreground">
-                                                Sega-nos no Instagam.
+                                                Sega-nos na Twitch.
                                             </div>
                                         </Link>
                                     </NavigationMenuLink>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#" className="group/youtube">
+                                        <Link
+                                            href="https://discord.com/invite/suVCpzB"
+                                            target="_blank"
+                                            className="group/discord"
+                                        >
+                                            <div className="flex items-center gap-2 font-medium">
+                                                <FaSquareYoutube className="size-6 transition-colors group-hover/discord:text-indigo-500" />
+                                                <span className="transition-colors group-hover/discord:text-indigo-500">Discord</span>
+                                            </div>
+                                            <div className="text-muted-foreground">
+                                                Nosso grupo no Discord.
+                                            </div>
+                                        </Link>
+                                    </NavigationMenuLink>
+                                    <NavigationMenuLink asChild>
+                                        <Link
+                                            href="https://www.youtube.com/channel/UCz4oJ57gaGz48TbwTwFvS6w"
+                                            target="_blank"
+                                            className="group/youtube"
+                                        >
                                             <div className="flex items-center gap-2 font-medium">
                                                 <FaSquareYoutube className="size-6 transition-colors group-hover/youtube:text-red-500" />
                                                 <span className="transition-colors group-hover/youtube:text-red-500">Youtube</span>
@@ -130,7 +149,26 @@ export default function HeaderNavigationMenu() {
                                         </Link>
                                     </NavigationMenuLink>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#" className="group/facebook">
+                                        <Link
+                                            href="https://api.whatsapp.com/send/?phone=5519992354659&text&type=phone_number&app_absent=0"
+                                            target="_blank"
+                                            className="group/whatsapp"
+                                        >
+                                            <div className="flex items-center gap-2 font-medium">
+                                                <FaSquareWhatsapp className="size-6 transition-colors group-hover/whatsapp:text-green-500" />
+                                                <span className="transition-colors group-hover/whatsapp:text-green-500">Whatsapp</span>
+                                            </div>
+                                            <div className="text-muted-foreground">
+                                                Contate-nos pelo Whatsapp.
+                                            </div>
+                                        </Link>
+                                    </NavigationMenuLink>
+                                    <NavigationMenuLink asChild>
+                                        <Link
+                                            href="https://www.facebook.com/jogolivreBR"
+                                            target="_blank"
+                                            className="group/facebook"
+                                        >
                                             <div className="flex items-center gap-2 font-medium">
                                                 <FaSquareFacebook className="size-6 transition-colors group-hover/facebook:text-blue-500" />
                                                 <span className="transition-colors group-hover/facebook:text-blue-500">Facebook</span>

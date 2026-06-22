@@ -95,7 +95,7 @@ export default function StartComponentClient({ images }: Props) {
                             alt={img.name}
                             width={1920}
                             height={1080}
-                            className={`w-full object-cover ${imageClass[index]}`}
+                            className={`w-full object-cover opacity-40 ${imageClass[index]}`}
                         />
                     </div>
                 );
