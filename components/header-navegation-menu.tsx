@@ -1,53 +1,18 @@
 'use client';
 
-import Link from 'next/link';
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
+import AppLogoIcon from '@/components/app-logo-icon';
 import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle, } from '@/components/ui/navigation-menu';
-import AppLogoIcon from '@/components/app-logo-icon';
-import { useTheme } from 'next-themes';
+import { FaInstagram, FaSquareFacebook, FaSquareYoutube } from "react-icons/fa6";
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
 import gsap from 'gsap';
-
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-        title: "Hover Card",
-        href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
-    {
-        title: "Progress",
-        href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-        title: "Scroll-area",
-        href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
-    },
-    {
-        title: "Tabs",
-        href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
-]
+import { usePathname } from 'next/navigation';
 
 export default function HeaderNavigationMenu() {
+    const pathname = usePathname();
     const isMobile = useIsMobile();
     const { setTheme, theme } = useTheme();
     const headerRef = useRef<HTMLHeadElement>(null);
@@ -98,7 +63,7 @@ export default function HeaderNavigationMenu() {
             <NavigationMenu viewport={isMobile}>
                 <NavigationMenuList className="flex-wrap">
                     <NavigationMenuItem className="link-item opacity-0">
-                        <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                        <NavigationMenuTrigger>Inicio</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                                 <li className="row-span-3">
@@ -116,65 +81,62 @@ export default function HeaderNavigationMenu() {
                                         </Link>
                                     </NavigationMenuLink>
                                 </li>
-                                <ListItem href="/docs" title="Introduction">
+                                <ListItem
+                                    href={pathname === '/about' ? '#about' : '/about#about'}
+                                    title="Sobre Nós"
+                                >
                                     Re-usable components built using Radix UI and Tailwind CSS.
                                 </ListItem>
-                                <ListItem href="/docs/installation" title="Installation">
+                                <ListItem
+                                    href={pathname === '/about' ? '#objective' : '/about#objectve'}
+                                    title="Objetivo"
+                                >
                                     How to install dependencies and structure your app.
                                 </ListItem>
-                                <ListItem href="/docs/primitives/typography" title="Typography">
+                                <ListItem
+                                    href={pathname === '/about' ? '#who_we_are' : '/about#who_we_are'}
+                                    title="Quem Somos"
+                                >
                                     Styles for headings, paragraphs, lists...etc
                                 </ListItem>
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="link-item opacity-0">
-                        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                {components.map((component) => (
-                                    <ListItem
-                                        key={component.title}
-                                        title={component.title}
-                                        href={component.href}
-                                    >
-                                        {component.description}
-                                    </ListItem>
-                                ))}
-                            </ul>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem className="link-item opacity-0">
-                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/docs">Docs</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
                     <NavigationMenuItem className="hidden link-item opacity-0 md:block">
-                        <NavigationMenuTrigger>List</NavigationMenuTrigger>
+                        <NavigationMenuTrigger>Sociais</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid w-72 gap-4">
                                 <li>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Components</div>
+                                        <Link href="#" className="group/instagram">
+                                            <div className="flex items-center gap-2 font-medium">
+                                                <FaInstagram className="size-6 transition-colors group-hover/instagram:text-pink-500" />
+                                                <span className="transition-colors group-hover/instagram:text-pink-500">Instagram</span>
+                                            </div>
                                             <div className="text-muted-foreground">
-                                                Browse all components in the library.
+                                                Sega-nos no Instagam.
                                             </div>
                                         </Link>
                                     </NavigationMenuLink>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Documentation</div>
+                                        <Link href="#" className="group/youtube">
+                                            <div className="flex items-center gap-2 font-medium">
+                                                <FaSquareYoutube className="size-6 transition-colors group-hover/youtube:text-red-500" />
+                                                <span className="transition-colors group-hover/youtube:text-red-500">Youtube</span>
+                                            </div>
                                             <div className="text-muted-foreground">
-                                                Learn how to use the library.
+                                                Curta comente e compartilhe nossos vídeos.
                                             </div>
                                         </Link>
                                     </NavigationMenuLink>
                                     <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Blog</div>
+                                        <Link href="#" className="group/facebook">
+                                            <div className="flex items-center gap-2 font-medium">
+                                                <FaSquareFacebook className="size-6 transition-colors group-hover/facebook:text-blue-500" />
+                                                <span className="transition-colors group-hover/facebook:text-blue-500">Facebook</span>
+                                            </div>
                                             <div className="text-muted-foreground">
-                                                Read our latest blog posts.
+                                                Siga nassa página do Facebook.
                                             </div>
                                         </Link>
                                     </NavigationMenuLink>
