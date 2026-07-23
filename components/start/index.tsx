@@ -1,24 +1,111 @@
-import fs from 'fs';
-import path from 'path';
-import StartComponentClient from '@/components/start/index-client';
+'use client';
 
-export default async function StartComponentPage() {
-    const dirPath = path.join(process.cwd(), 'public', 'images', 'startpage');
+import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useRef, useState } from 'react';
 
-    let images: { url: string; name: string }[] = [];
-    try {
-        const files = await fs.promises.readdir(dirPath);
+gsap.registerPlugin(useGSAP);
 
-        images = files
-            .filter((filename) => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(filename))
-            .map((filename) => ({
-                url: `/images/startpage/${filename}`,
-                name: filename,
-            }));
-    } catch (error) {
-        console.error('Erro ao ler a pasta public/images/startpage:', error);
-    }
+const IMAGES = [
+    {
+        url: '/images/startpage/Jason_Duval_01.webp',
+        name: 'Imagem Jason Duval',
+    },
+    {
+        url: '/images/startpage/Jason_Duval_04.webp',
+        name: 'Imagem Jason Duval 2',
+    },
+    {
+        url: '/images/startpage/Lucia_Caminos_06.webp',
+        name: 'Imagem Lucia Caminos',
+    },
+];
+
+export default function StartComponentClient() {
+    const divImageRef = useRef<(HTMLDivElement | null)[]>([]);
+    const [selectedIndex, setSelectedIndex] = useState<number>(2);
+    const positionClass = [
+        'mt-20',
+        'mt-[512px] -mb-20',
+        'mt-60',
+    ];
+    const imageClass = [
+        'object-[-900px]',
+        'object-[-300px]',
+        'object-[-600px]',
+    ];
+    const preloadImage = (src: string) => {
+        return new Promise((resolve) => {
+            const img = new window.Image();
+            img.src = src;
+            img.onload = () => resolve(true);
+        });
+    };
+
+    const handleClickDivImage = async (index: number) => {
+        const url = IMAGES[index].url;
+        await preloadImage(url);
+        setSelectedIndex(index);
+
+        divImageRef.current.forEach((element, i) => {
+            if (!element) return;
+
+            if (i === index) {
+                const isScaledUp = element.dataset.scaled === 'true';
+                gsap.to(element, {
+                    scale: isScaledUp ? 1 : 0.85,
+                    zIndex: 2,
+                    duration: 0.5,
+                    ease: "power2.out",
+                });
+                element.dataset.scaled = isScaledUp ? 'false' : 'true';
+            } else {
+                gsap.to(element, {
+                    scale: 1,
+                    zIndex: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                });
+                element.dataset.scaled = 'false';
+            }
+        });
+    };
+    useGSAP(() => {
+        gsap.fromTo(divImageRef.current, {
+            opacity: 0,
+            y: -300,
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 3,
+            stagger: 0.3,
+            ease: "power3.out"
+        });
+    });
     return (
-        <StartComponentClient images={images} />
+        <section
+            style={{ backgroundImage: `url(${IMAGES[selectedIndex].url})` }}
+            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-cover bg-fixed transition-all duration-500 ease-in-out"
+        >
+            {IMAGES.map((img, index) => {
+                return (
+                    <div
+                        key={img.url}
+                        onClick={() => handleClickDivImage(index)}
+                        ref={(el) => { divImageRef.current[index] = el }}
+                        className={`flex w-lg h-[924px] cursor-pointer z-1 opacity-0 ${positionClass[index]}`}
+                    >
+                        <Image
+                            src={img.url}
+                            alt={img.name}
+                            width={1920}
+                            height={1080}
+                            className={`w-full object-cover opacity-40 ${imageClass[index]}`}
+                        />
+                    </div>
+                );
+            })}
+        </section>
     );
 }

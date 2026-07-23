@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaSquareFacebook, FaSquareWhatsapp, FaTwitch } from 'react-icons/fa6';
 
-export default function FooterComponents() {
+export default function FooterComponentClient() {
     const footerRef = useRef(null);
     const h4Ref = useRef(null);
     const divFaceRef = useRef(null);
@@ -23,118 +23,60 @@ export default function FooterComponents() {
 
         if (!isMobile) {
             const footer = footerRef.current;
-            const h4Footer = h4Ref.current;
-            const divFace = divFaceRef.current;
-            const divWhats = divWhatsRef.current;
-            const divTwich = divTwichRef.current;
-            const linkFace = linkFaceRef.current;
-            const linkWhats = linkWhatsRef.current;
-            const linkTwich = linkTwichRef.current;
 
-            gsap.fromTo(h4Footer, {
-                opacity: 0,
-                y: 300,
-                color: '#000',
-            }, {
-                opacity: 1,
-                y: 0,
-                color: '#ef4444',
-                duration: 1,
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: footer,
-                    start: 'top center'
+                    start: 'top center',
                 },
             });
 
-            gsap.fromTo(divFace, {
-                opacity: 0,
-                x: 300,
-            }, {
-                opacity: 1,
-                x: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-
-            gsap.fromTo(divWhats, {
-                opacity: 0,
-                y: -300,
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-
-            gsap.fromTo(divTwich, {
-                opacity: 0,
-                x: -300,
-            }, {
-                opacity: 1,
-                x: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-
-            gsap.fromTo(linkFace, {
-                opacity: 0,
-                y: -300,
-                x: 100,
-            }, {
-                display: 'flex',
-                opacity: 1,
-                y: 0,
-                x: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-
-            gsap.fromTo(linkWhats, {
-                opacity: 0,
-                y: -300,
-            }, {
-                display: 'flex',
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-
-            gsap.fromTo(linkTwich, {
-                opacity: 0,
-                y: -300,
-                x: -100,
-            }, {
-                display: 'flex',
-                opacity: 1,
-                y: 0,
-                x: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: footer,
-                    start: 'top center'
-                },
-            });
-        };
+            tl.fromTo(
+                h4Ref.current,
+                { opacity: 0, y: 300, color: '#000' },
+                { opacity: 1, y: 0, color: '#ef4444', duration: 1 }
+            )
+                .fromTo(
+                    divFaceRef.current,
+                    { opacity: 0, x: 300 },
+                    { opacity: 1, x: 0, duration: 1 },
+                    '-=0.8'
+                )
+                .fromTo(
+                    divWhatsRef.current,
+                    { opacity: 0, y: -300 },
+                    { opacity: 1, y: 0, duration: 1 },
+                    '<0.2'
+                )
+                .fromTo(
+                    divTwichRef.current,
+                    { opacity: 0, x: -300 },
+                    { opacity: 1, x: 0, duration: 1 },
+                    '<0.2'
+                )
+                .fromTo(
+                    linkFaceRef.current,
+                    { opacity: 0, y: -300, x: 100 },
+                    { display: 'flex', opacity: 1, y: 0, x: 0, duration: 1 },
+                    '<0.2'
+                )
+                .fromTo(
+                    linkWhatsRef.current,
+                    { opacity: 0, y: -300 },
+                    { display: 'flex', opacity: 1, y: 0, duration: 1 },
+                    '<0.2'
+                )
+                .fromTo(
+                    linkTwichRef.current,
+                    { opacity: 0, y: -300, x: -100 },
+                    { display: 'flex', opacity: 1, y: 0, x: 0, duration: 1 },
+                    '<0.2'
+                );
+        }
     }, []);
     return (
         <footer
-            className='w-full flex flex-col justify-between pb-3'
+            className='w-full flex flex-col justify-between'
             id='social'
             ref={footerRef}
         >

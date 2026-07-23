@@ -1,24 +1,75 @@
-import fs from 'fs';
-import path from 'path';
-import OneGamerComponentClient from '@/components/onegamer/index-client';
+'use client';
 
-export default async function OneGamerComponentPage() {
-    const dirPath = path.join(process.cwd(), 'public', 'images', 'onegamer');
+import Image from 'next/image';
+import { useRef, useState } from 'react';
 
-    let images: { url: string; name: string }[] = [];
-    try {
-        const files = await fs.promises.readdir(dirPath);
+const IMAGES = [
+    {
+        url: '/images/onegamer/Brian_Heder_05.webp',
+        name: 'Imagem Brian Heder',
+    },
+    {
+        url: '/images/onegamer/Jason_Duval_03.webp',
+        name: 'Imagem Jason Duval',
+    },
+    {
+        url: '/images/onegamer/Lucia_Caminos_02.webp',
+        name: 'Imagem Lucia Caminos',
+    },
+];
 
-        images = files
-            .filter((filename) => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(filename))
-            .map((filename) => ({
-                url: `/images/onegamer/${filename}`,
-                name: filename,
-            }));
-    } catch (error) {
-        console.error('Erro ao ler a pasta public/images/onegamer:', error);
-    }
+export default function OneGamerComponentClient() {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const sectionRef = useRef<HTMLElement | null>(null);
+
+    const positionClass = [
+        '-mt-40',
+        'mt-40',
+        '-mt-60',
+    ];
+    const imageClass = [
+        'object-[-400px]',
+        'object-[-30px]',
+        'object-[-550px]',
+    ];
+    const activeImageClass = [
+        'absolute top-0 left-0 object-center animate-image-left',
+        'absolute top-0 left-0 object-center animate-image-center',
+        'absolute top-0 left-0 object-center animate-image-right',
+    ];
+    function handleClick(index: number) {
+        setActiveIndex(prev => (prev === index ? null : index));
+    };
     return (
-        <OneGamerComponentClient images={images} />
+        <section
+            ref={sectionRef}
+            className='relative flex gap-6 justify-center min-w-full min-h-screen bg-[url("/images/background.avif")] lg:bg-[url("/images/background_all.avif")] bg-fixed bg-no-repeat 2xl:bg-cover'
+        >
+            {IMAGES.map((img, index) => {
+                const isActive = activeIndex === index;
+                return (
+                    <div
+                        key={img.url}
+                        onClick={() => handleClick(index)}
+                        className={`
+                            flex w-lg h-[924px] cursor-pointer transition-transform
+                            ${isActive ? 'z-10' : 'z-0'}
+                            ${positionClass[index]}
+                        `}
+                    >
+                        <Image
+                            src={img.url}
+                            alt={img.name}
+                            width={1920}
+                            height={1080}
+                            className={`
+                                min-w-full min-h-full object-cover
+                                ${isActive ? activeImageClass[index] : imageClass[index]}
+                            `}
+                        />
+                    </div>
+                );
+            })}
+        </section>
     );
 }
