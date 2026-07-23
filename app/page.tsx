@@ -1,6 +1,7 @@
 import FooterPage from '@/components/footer/footer';
 import OneGamerComponentPage from '@/components/onegamer';
 import StartComponentPage from '@/components/start';
+import TwoGamerComponentPage from '@/components/twogamer';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <main className="flex min-h-screen min-w-full max-w-3xl flex-col justify-between">
         <StartComponentPage />
         <OneGamerComponentPage />
+        <TwoGamerComponentPage />
         <FooterPage />
       </main>
     </>

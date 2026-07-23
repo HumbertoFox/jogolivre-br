@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import OneGamerComponentClient from '@/components/onegamer/index-client';
+import TwoGamerComponentClient from '@/components/twogamer/index-client';
 
-export default async function OneGamerComponentPage() {
-    const dirPath = path.join(process.cwd(), 'public', 'images', 'onegamer');
+export default async function TwoGamerComponentPage() {
+    const dirPath = path.join(process.cwd(), 'public', 'images', 'twogamer');
 
     let images: { url: string; name: string }[] = [];
     try {
@@ -12,13 +12,13 @@ export default async function OneGamerComponentPage() {
         images = files
             .filter((filename) => /\.(jpg|jpeg|png|webp|svg|gif)$/i.test(filename))
             .map((filename) => ({
-                url: `/images/onegamer/${filename}`,
+                url: `/images/twogamer/${filename}`,
                 name: filename,
             }));
     } catch (error) {
-        console.error('Erro ao ler a pasta public/images/onegamer:', error);
+        console.error('Erro ao ler a pasta public/images/twogamer:', error);
     }
     return (
-        <OneGamerComponentClient images={images} />
+        <TwoGamerComponentClient images={images} />
     );
 }

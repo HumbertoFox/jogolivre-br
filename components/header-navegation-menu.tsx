@@ -4,7 +4,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import AppLogoIcon from '@/components/app-logo-icon';
 import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { FaSquareFacebook, FaSquareWhatsapp, FaSquareYoutube, FaTwitch } from "react-icons/fa6";
+import { FaDiscord, FaSquareFacebook, FaSquareWhatsapp, FaSquareYoutube, FaTwitch } from "react-icons/fa6";
 import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
@@ -125,7 +125,7 @@ export default function HeaderNavigationMenu() {
                                             className="group/discord"
                                         >
                                             <div className="flex items-center gap-2 font-medium">
-                                                <FaSquareYoutube className="size-6 transition-colors group-hover/discord:text-indigo-500" />
+                                                <FaDiscord className="size-6 transition-colors group-hover/discord:text-indigo-500" />
                                                 <span className="transition-colors group-hover/discord:text-indigo-500">Discord</span>
                                             </div>
                                             <div className="text-muted-foreground">

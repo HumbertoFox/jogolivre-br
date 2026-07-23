@@ -48,7 +48,7 @@ export default function StartComponentClient({ images }: Props) {
             if (i === index) {
                 const isScaledUp = element.dataset.scaled === 'true';
                 gsap.to(element, {
-                    scale: isScaledUp ? 1 : 1.2,
+                    scale: isScaledUp ? 1 : 0.85,
                     zIndex: 2,
                     duration: 0.5,
                     ease: "power2.out",
