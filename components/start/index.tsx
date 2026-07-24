@@ -10,14 +10,17 @@ gsap.registerPlugin(useGSAP);
 const IMAGES = [
     {
         url: '/images/startpage/Jason_Duval_01.webp',
+        murl: '/images/mobile/startpage/Jason_Duval_Mobile_01.jpg',
         name: 'Imagem Jason Duval',
     },
     {
         url: '/images/startpage/Jason_Duval_04.webp',
+        murl: '/images/mobile/startpage/Jason_Duval_Mobile_04.jpg',
         name: 'Imagem Jason Duval 2',
     },
     {
         url: '/images/startpage/Lucia_Caminos_06.webp',
+        murl: '/images/mobile/startpage/Lucia_Caminos_Mobile_06.jpg',
         name: 'Imagem Lucia Caminos',
     },
 ];
@@ -85,8 +88,11 @@ export default function StartComponentClient() {
     });
     return (
         <section
-            style={{ backgroundImage: `url(${IMAGES[selectedIndex].url})` }}
-            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-cover bg-fixed transition-all duration-500 ease-in-out"
+            style={{
+                '--bg-mobile': `url(${IMAGES[selectedIndex].murl})`,
+                '--bg-desktop': `url(${IMAGES[selectedIndex].url})`
+            } as React.CSSProperties}
+            className="relative flex flex-row-reverse gap-6 justify-center min-w-full min-h-screen bg-(image:--bg-mobile) md:bg-(image:--bg-desktop) bg-cover bg-fixed transition-all duration-500 ease-in-out"
         >
             {IMAGES.map((img, index) => {
                 return (

@@ -6,14 +6,17 @@ import { useRef, useState } from 'react';
 const IMAGES = [
     {
         url: '/images/onegamer/Brian_Heder_05.webp',
+        murl: '/images/mobile/onegamer/Brian_Heder_Mobile_05.jpg',
         name: 'Imagem Brian Heder',
     },
     {
         url: '/images/onegamer/Jason_Duval_03.webp',
+        murl: '/images/mobile/onegamer/Jason_Duval_Mobile_03.jpg',
         name: 'Imagem Jason Duval',
     },
     {
         url: '/images/onegamer/Lucia_Caminos_02.webp',
+        murl: '/images/mobile/onegamer/Lucia_Caminos_Mobile_02.jpg',
         name: 'Imagem Lucia Caminos',
     },
 ];
@@ -63,7 +66,18 @@ export default function OneGamerComponentClient() {
                             width={1920}
                             height={1080}
                             className={`
-                                min-w-full min-h-full object-cover
+                                hidden md:block min-w-full min-h-full object-cover
+                                ${isActive ? activeImageClass[index] : imageClass[index]}
+                            `}
+                        />
+
+                        <Image
+                            src={img.murl}
+                            alt={img.name}
+                            width={1920}
+                            height={1080}
+                            className={`
+                                md:hidden min-w-full min-h-full object-cover
                                 ${isActive ? activeImageClass[index] : imageClass[index]}
                             `}
                         />

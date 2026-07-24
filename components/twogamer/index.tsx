@@ -5,28 +5,40 @@ import { useRef, useState } from 'react';
 
 const IMAGES = [
     {
-        url: '/images/twogamer/PREVIEW_SCREENSHOT4_153785.webp',
-        name: 'Imagem PREVIEW_SCREENSHOT4_153785',
+        url: '/images/twogamer/2itrqjabvit41.jpg',
+        name: 'Imagem Residente 1',
     },
     {
-        url: '/images/twogamer/re_hd_remaster1_chamada.webp',
-        name: 'Imagem re_hd_remaster1_chamada',
+        url: '/images/twogamer/825FgcpyYGSvg6JLNxmy6D.jpg',
+        name: 'Imagem Residente 2',
     },
     {
-        url: '/images/twogamer/re2_by_jhonyhebert-dc0i9kf.jpg',
-        name: 'Imagem re2_by_jhonyhebert-dc0i9kf',
+        url: '/images/twogamer/801-1674075896-1508425083.webp',
+        name: 'Imagem Residente 3',
     },
     {
-        url: '/images/twogamer/resident-evil-revelations-walkthrough-guide-4873-1504023451023.webp',
-        name: 'Imagem resident-evil-revelations-walkthrough-guide-4873-1504023451023',
+        url: '/images/twogamer/RE4HDProject Original.jpg',
+        name: 'Imagem residente 4',
     },
     {
-        url: '/images/twogamer/resident558456.jpg',
-        name: 'Imagem Lucia resident558456',
+        url: '/images/twogamer/Resi-5.webp',
+        name: 'Imagem Residente 5',
     },
     {
-        url: '/images/twogamer/residente1115.jpg',
-        name: 'Imagem residente1115',
+        url: '/images/twogamer/sielsfdhk1pa1.jpg',
+        name: 'Imagem Residente 6',
+    },
+    {
+        url: '/images/twogamer/1_tTDi7Q6rrQvUTGPV0XCljg.jpg',
+        name: 'Imagem Residente 7',
+    },
+    {
+        url: '/images/twogamer/re-village-main-menu-is-beautiful-v0-liv3tkl1gzlc1.webp',
+        name: 'Imagem Residente 8',
+    },
+    {
+        url: '/images/twogamer/ResidentEvilRequiemBanner-2.jpg',
+        name: 'Imagem Residente 9',
     },
 ];
 
@@ -43,6 +55,7 @@ export default function TwoGamerComponentClient() {
         '-mt-60',
         'mt-40',
         '-mt-40',
+        'mt-40',
     ];
     const imageClass = [
         'object-[-400px]',
@@ -53,6 +66,7 @@ export default function TwoGamerComponentClient() {
         'object-[-550px]',
         'object-[-400px]',
         'object-[-30px]',
+        'object-[-550px]',
     ];
     const activeImageClass = [
         'absolute top-0 left-0 object-center animate-image-left',
@@ -63,6 +77,7 @@ export default function TwoGamerComponentClient() {
         'absolute top-0 left-0 object-center animate-image-right',
         'absolute top-0 left-0 object-center animate-image-left',
         'absolute top-0 left-0 object-center animate-image-center',
+        'absolute top-0 left-0 object-center animate-image-right',
     ];
     function handleClick(index: number) {
         setActiveIndex(prev => (prev === index ? null : index));
