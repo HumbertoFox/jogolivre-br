@@ -58,39 +58,39 @@ export default function WhoWeAreClient() {
                     👾 Quem Somos!
                 </h3>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     Somos o Jogo Livre BR, um projeto feito por quem é apaixonado por games de verdade, movido pela nostalgia dos grandes clássicos e pela magia de explorar novos mundos.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     Surgimos da certeza de que a experiência gamer não deve ser limitada por placas de vídeo de última geração ou equipamentos caríssimos. Para nós, o que realmente importa é a história, a jogabilidade e a diversão.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     Somos jogadores reais testando, descobrindo e compartilhando as melhores alternativas de entretenimento digital para quem quer jogar no celular, no PC fraco, na TV Box ou em plataformas acessíveis.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     ⚔️ O que nos define:
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     🕹️ Gamers sem Frescura: Valorizamos a essência do jogo, seja um RPG clássico de turnos, um indie marcante ou um título otimizado.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     🛠️ Curiosidade & Prática: Adoramos testar limites de dispositivos do cotidiano para provar que eles podem sim virar uma máquina de jogos.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     📣 Voz da Acessibilidade: Jogar é para todos. Queremos simplificar caminhos e facilitar o acesso ao universo gamer para toda a comunidade brasileira.
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     &#34;O bom jogo é aquele que diverte, independentemente de onde ele esteja rodando.&#34;
                 </p>
 
-                <p className="who-we-are-p text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
+                <p className="who-we-are-p text-justify md:text-center text-sm sm:text-2xl opacity-100 md:opacity-0">
                     Junte-se ao Jogo Livre BR e faça parte dessa jornada com a gente!
                 </p>
             </div>
