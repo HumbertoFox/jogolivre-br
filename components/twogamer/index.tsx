@@ -1,117 +1,111 @@
 'use client';
 
-import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
-const IMAGES = [
+const GAMES = [
     {
-        url: '/images/twogamer/2itrqjabvit41.jpg',
-        name: 'Imagem Residente 1',
+        id: '1',
+        youtubeId: '2c-wmEwnXN0',
+        title: 'PLACA DE CAPTURA COMO TIRAR DELAY E INPUT LAG E FIX SOM DELAY',
     },
     {
-        url: '/images/twogamer/825FgcpyYGSvg6JLNxmy6D.jpg',
-        name: 'Imagem Residente 2',
+        id: '2',
+        youtubeId: 'nu3Ep_oy_Ok',
+        title: 'Como instalar e configurar TeamSpeak (2025).',
     },
     {
-        url: '/images/twogamer/801-1674075896-1508425083.webp',
-        name: 'Imagem Residente 3',
+        id: '3',
+        youtubeId: 'Q31S1dKuzmk',
+        title: 'JOYTOKEY CONFIGURAR FÁCIL (2022)',
     },
     {
-        url: '/images/twogamer/RE4HDProject Original.jpg',
-        name: 'Imagem residente 4',
+        id: '4',
+        youtubeId: 'd8qbtMFx7ME',
+        title: 'NAVEGADOR WEB WINDOWS XP 2020',
     },
     {
-        url: '/images/twogamer/Resi-5.webp',
-        name: 'Imagem Residente 5',
+        id: '5',
+        youtubeId: '_fgBvkHLQfE',
+        title: 'MELHOR NAVEGADOR WINDOWS XP 2020(chrome 69 é possivel)',
     },
     {
-        url: '/images/twogamer/sielsfdhk1pa1.jpg',
-        name: 'Imagem Residente 6',
+        id: '6',
+        youtubeId: 'mZIK9hg6irs',
+        title: 'Jogo Livre BR Ediçao e Video (DANIEL Grupo Gameplays-MG)divulgação Canal',
     },
     {
-        url: '/images/twogamer/1_tTDi7Q6rrQvUTGPV0XCljg.jpg',
-        name: 'Imagem Residente 7',
+        id: '7',
+        youtubeId: 'otHic4xYrds',
+        title: 'NAVEGADOR WEB WINDOWS XP 2020 FUNCIONAL E ATUAL',
     },
     {
-        url: '/images/twogamer/re-village-main-menu-is-beautiful-v0-liv3tkl1gzlc1.webp',
-        name: 'Imagem Residente 8',
+        id: '8',
+        youtubeId: '2SbtUcc1-R4',
+        title: 'JOGO DE PS2 PARECIDO COM DARK SOULS',
     },
     {
-        url: '/images/twogamer/ResidentEvilRequiemBanner-2.jpg',
-        name: 'Imagem Residente 9',
+        id: '9',
+        youtubeId: 'fjU37bNbB14',
+        title: 'NAVEGADOR WEB WINDOWS XP 2022 (BROWSER 2022 XP)',
+    },
+    {
+        id: '10',
+        youtubeId: '-etIYpy-L7o',
+        title: 'Melhor Mod de Fallout 4 para XBOX GAME PASS (2025).',
     },
 ];
 
-export default function TwoGamerComponentClient() {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const sectionRef = useRef<HTMLElement | null>(null);
+export default function TwoGamerVideoClient() {
+    const [selectedVideo, setSelectedVideo] = useState(GAMES[0]);
 
-    const positionClass = [
-        '-mt-40',
-        'mt-40',
-        '-mt-60',
-        '-mt-40',
-        'mt-40',
-        '-mt-60',
-        'mt-40',
-        '-mt-40',
-        'mt-40',
-    ];
-    const imageClass = [
-        'object-[-400px]',
-        'object-[-30px]',
-        'object-[-550px]',
-        'object-[-400px]',
-        'object-[-30px]',
-        'object-[-550px]',
-        'object-[-400px]',
-        'object-[-30px]',
-        'object-[-550px]',
-    ];
-    const activeImageClass = [
-        'absolute top-0 left-0 object-center animate-image-left',
-        'absolute top-0 left-0 object-center animate-image-center',
-        'absolute top-0 left-0 object-center animate-image-right',
-        'absolute top-0 left-0 object-center animate-image-left',
-        'absolute top-0 left-0 object-center animate-image-center',
-        'absolute top-0 left-0 object-center animate-image-right',
-        'absolute top-0 left-0 object-center animate-image-left',
-        'absolute top-0 left-0 object-center animate-image-center',
-        'absolute top-0 left-0 object-center animate-image-right',
-    ];
-    function handleClick(index: number) {
-        setActiveIndex(prev => (prev === index ? null : index));
-    };
     return (
-        <section
-            ref={sectionRef}
-            className='relative flex gap-6 justify-center min-w-full min-h-screen bg-[url("/images/background.avif")] lg:bg-[url("/images/background_all.avif")] bg-fixed bg-no-repeat 2xl:bg-cover'
-        >
-            {IMAGES.map((img, index) => {
-                const isActive = activeIndex === index;
-                return (
-                    <div
-                        key={img.url}
-                        onClick={() => handleClick(index)}
-                        className={`
-                            flex w-lg h-[924px] cursor-pointer transition-transform
-                            ${isActive ? 'z-10' : 'z-0'}
-                            ${positionClass[index]}
-                        `}
-                    >
-                        <Image
-                            src={img.url}
-                            alt={img.name}
-                            width={1920}
-                            height={1080}
-                            className={`
-                                min-w-full min-h-full object-cover
-                                ${isActive ? activeImageClass[index] : imageClass[index]}
-                            `}
-                        />
-                    </div>
-                );
-            })}
-        </section>
+        <div className="flex flex-col md:flex-row w-full h-screen overflow-hidden bg-slate-950 text-white font-sans">
+
+            <main className="flex-1 order-1 md:order-2 h-full relative bg-black">
+                {selectedVideo && (
+                    <iframe
+                        className="w-full h-full border-0"
+                        src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&mute=0&rel=0&modestbranding=1`}
+                        title={selectedVideo.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                )}
+            </main>
+
+            <aside className="order-2 md:order-1 w-full md:w-20 h-auto md:h-full bg-slate-900/90 backdrop-blur-md border-t md:border-t-0 md:border-r border-slate-800 flex flex-row md:flex-col items-center p-1 md:py-6 shadow-2xl z-20 shrink-0">
+
+                <div className="mr-3 md:mr-0 md:mb-6 flex flex-col items-center shrink-0">
+                    <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-orange-600 animate-pulse mb-0.5 md:mb-1" />
+                    <span className="text-[9px] md:text-[10px] font-black tracking-widest text-orange-500 uppercase">
+                        TV
+                    </span>
+                </div>
+
+                <nav className="flex-1 w-full flex flex-row md:flex-col items-center gap-2 md:gap-3 overflow-x-auto md:overflow-y-auto scrollbar-none py-1 md:py-0 px-1 md:px-0">
+                    {GAMES.map((video, index) => {
+                        const isSelected = selectedVideo?.id === video.id;
+                        const formattedNumber = index + 1 < 10 ? `0${index + 1}` : `${index + 1}`;
+
+                        return (
+                            <button
+                                key={video.id}
+                                onClick={() => setSelectedVideo(video)}
+                                title={video.title}
+                                className={`w-11 h-10 md:w-14 md:h-12 rounded-xl transition-all duration-300 flex items-center justify-center border cursor-pointer shrink-0 ${isSelected
+                                    ? 'bg-green-600/20 border-green-500 text-green-400 font-bold shadow-lg shadow-red-950/50 scale-85'
+                                    : 'bg-slate-800/40 border-slate-700/50 text-slate-400 hover:bg-slate-800 hover:border-slate-500 hover:text-white'
+                                    }`}
+                            >
+                                <span className="text-xs md:text-sm font-mono tracking-wider">
+                                    {formattedNumber}
+                                </span>
+                            </button>
+                        );
+                    })}
+                </nav>
+            </aside>
+
+        </div>
     );
 }
